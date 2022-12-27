@@ -6,9 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ozgursarki.newsapp.R
+import com.ozgursarki.newsapp.databinding.FragmentSportBinding
+import com.ozgursarki.newsapp.databinding.FragmentTabBinding
 
 
-class TabFragment : Fragment() {
+class SportFragment : Fragment() {
+
+    private lateinit var binding: FragmentSportBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +24,9 @@ class TabFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_tab, container, false)
+        binding = FragmentSportBinding.inflate(inflater,container,false)
+        val view = binding.root
+        return view
     }
 
 }

@@ -55,12 +55,6 @@
         app:layout_constraintTop_toBottomOf="@id/appBar">
     </androidx.viewpager2.widget.ViewPager2>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerviewNews"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@id/appBar"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,6 +12,8 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.ozgursarki.newsapp.R
 import com.ozgursarki.newsapp.adapter.NewsPagerAdapter
 import com.ozgursarki.newsapp.databinding.FragmentNewsBinding
+import com.ozgursarki.newsapp.enum.NewsType
+import com.ozgursarki.newsapp.model.TabModel
 
 class NewsFragment : Fragment() {
 
@@ -40,15 +42,20 @@ class NewsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewpager2 = binding.viewPager2
-        adapter = NewsPagerAdapter(this,4)
+        val fragmentList = listOf<TabModel>(
+            TabModel(NewsType.SPORT),
+            TabModel(NewsType.WEATHER),
+            TabModel(NewsType.SCIENCE),
+            TabModel(NewsType.POLITICA)
+        )
+        adapter = NewsPagerAdapter(this,fragmentList)
         viewpager2.adapter = adapter
-        recyclerView = binding.recyclerviewNews
-        binding.recyclerviewNews.adapter = adapter
+
 
 
         val tabLayout = binding.tabLayout
         TabLayoutMediator(tabLayout,viewpager2) { tab, position ->
-            tab.text = "GUN ${(position + 1)}"
+            tab.text = fragmentList[position].newsType.name
         }.attach()
     }
 

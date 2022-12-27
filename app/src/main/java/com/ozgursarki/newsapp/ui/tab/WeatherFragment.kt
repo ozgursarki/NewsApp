@@ -1,4 +1,4 @@
-package com.ozgursarki.newsapp.ui
+package com.ozgursarki.newsapp.ui.tab
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,12 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ozgursarki.newsapp.R
-import com.ozgursarki.newsapp.adapter.NewsPagerAdapter
-import com.ozgursarki.newsapp.databinding.FragmentNewsDetailsBinding
+import com.ozgursarki.newsapp.databinding.FragmentTabBinding
+import com.ozgursarki.newsapp.databinding.FragmentWeatherBinding
 
-class NewsDetailsFragment : Fragment() {
 
-    private lateinit var binding: FragmentNewsDetailsBinding
+class WeatherFragment : Fragment() {
+
+    private lateinit var binding: FragmentWeatherBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +24,7 @@ class NewsDetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentNewsDetailsBinding.inflate(inflater,container,false)
+        binding = FragmentWeatherBinding.inflate(inflater,container,false)
         val view = binding.root
         return view
     }

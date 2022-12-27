@@ -1,17 +1,17 @@
-package com.ozgursarki.newsapp.ui
+package com.ozgursarki.newsapp.ui.tab
 
+import android.app.Fragment
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.ozgursarki.newsapp.R
-import com.ozgursarki.newsapp.adapter.NewsPagerAdapter
-import com.ozgursarki.newsapp.databinding.FragmentNewsDetailsBinding
+import com.ozgursarki.newsapp.databinding.FragmentPoliticaBinding
+import com.ozgursarki.newsapp.databinding.FragmentTabBinding
 
-class NewsDetailsFragment : Fragment() {
 
-    private lateinit var binding: FragmentNewsDetailsBinding
+class PoliticaFragment : androidx.fragment.app.Fragment() {
+
+    private lateinit var binding: FragmentPoliticaBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +23,7 @@ class NewsDetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentNewsDetailsBinding.inflate(inflater,container,false)
+        binding = FragmentPoliticaBinding.inflate(inflater,container,false)
         val view = binding.root
         return view
     }
