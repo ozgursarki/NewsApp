@@ -14,7 +14,9 @@ import com.ozgursarki.newsapp.adapter.NewsPagerAdapter
 import com.ozgursarki.newsapp.databinding.FragmentNewsBinding
 import com.ozgursarki.newsapp.enum.NewsType
 import com.ozgursarki.newsapp.model.TabModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NewsFragment : Fragment() {
 
     private lateinit var binding: FragmentNewsBinding
