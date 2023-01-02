@@ -2,7 +2,7 @@ package com.ozgursarki.newsapp.di
 
 import com.ozgursarki.newsapp.data.Repository
 import com.ozgursarki.newsapp.data.RepositoryImplementation
-import com.ozgursarki.newsapp.service.NewsAPI
+import com.ozgursarki.newsapp.data.service.NewsAPI
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

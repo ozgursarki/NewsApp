@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import com.ozgursarki.newsapp.R
 import com.ozgursarki.newsapp.databinding.FragmentTabBinding
 import com.ozgursarki.newsapp.databinding.FragmentWeatherBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class WeatherFragment : Fragment() {
 
     private lateinit var binding: FragmentWeatherBinding

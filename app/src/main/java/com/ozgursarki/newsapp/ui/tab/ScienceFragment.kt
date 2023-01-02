@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import com.ozgursarki.newsapp.R
 import com.ozgursarki.newsapp.databinding.FragmentScienceBinding
 import com.ozgursarki.newsapp.databinding.FragmentTabBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class ScienceFragment : Fragment() {
 
     private lateinit var binding: FragmentScienceBinding

@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.ozgursarki.newsapp.databinding.FragmentPoliticaBinding
 import com.ozgursarki.newsapp.databinding.FragmentTabBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class PoliticaFragment : androidx.fragment.app.Fragment() {
 
     private lateinit var binding: FragmentPoliticaBinding
