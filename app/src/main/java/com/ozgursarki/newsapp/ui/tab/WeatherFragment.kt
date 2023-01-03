@@ -5,11 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.ozgursarki.newsapp.R
 import com.ozgursarki.newsapp.adapter.NewsFragmentAdapter
 import com.ozgursarki.newsapp.databinding.FragmentWeatherBinding
+import com.ozgursarki.newsapp.enum.LangType
+import com.ozgursarki.newsapp.extensions.navigate
 import com.ozgursarki.newsapp.ui.NewsFragmentDirections
 import com.ozgursarki.newsapp.ui.viewmodel.WeatherFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,21 +22,16 @@ import kotlin.text.Typography.dagger
 
 
 @AndroidEntryPoint
-class WeatherFragment : Fragment() {
+class WeatherFragment : BaseFragment(), AdapterView.OnItemSelectedListener {
 
     private lateinit var binding: FragmentWeatherBinding
     private val viewModel: WeatherFragmentViewModel by viewModels()
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentWeatherBinding.inflate(inflater,container,false)
         val view = binding.root
         return view
@@ -41,10 +41,18 @@ class WeatherFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        val adapter = NewsFragmentAdapter(arrayListOf(), callback = {
-            onClick(it)
-        })
         binding.weatherrv.adapter = adapter
+
+        val spinner: Spinner = binding.langSpinner
+        spinner.onItemSelectedListener = this
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.language,
+            androidx.transition.R.layout.support_simple_spinner_dropdown_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item)
+            spinner.adapter = adapter
+        }
 
         viewModel.weatherNews.observe(viewLifecycleOwner,){weatherNews ->
             adapter.setNews(weatherNews)
@@ -54,9 +62,24 @@ class WeatherFragment : Fragment() {
 
     }
 
-    fun onClick(url: String) {
+    override fun onClick(url: String) {
         val action = NewsFragmentDirections.actionNewsFragmentToNewsDetailsFragment2(url)
-        findNavController().navigate(action)
+        navigate(action)
+    }
+
+
+    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+        val item = p0?.getItemAtPosition(p2)
+        when (item){
+            LangType.German.name -> viewModel.getNews(LangType.German)
+            LangType.Turkish.name -> viewModel.getNews(LangType.Turkish)
+            LangType.English.name -> viewModel.getNews(LangType.English)
+        }
+
+    }
+
+    override fun onNothingSelected(p0: AdapterView<*>?) {
+        TODO("Not yet implemented")
     }
 
 }

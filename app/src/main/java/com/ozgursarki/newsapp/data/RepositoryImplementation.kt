@@ -11,4 +11,8 @@ class RepositoryImplementation @Inject constructor(
     override suspend fun getNews(category: String): News {
         return api.getNews(category)
     }
+
+    override suspend fun getNewsByLanguage(country:String, category:String): News {
+        return api.getNewsByLanguage(country,category)
+    }
 }

@@ -58,10 +58,14 @@ class NewsFragment : Fragment() {
 
         val tabLayout = binding.tabLayout
         TabLayoutMediator(tabLayout,viewpager2) { tab, position ->
-            tab.text = fragmentList[position].newsType.name
+            when(position) {
+                0 -> tab.setCustomView(R.layout.ic_tab_sport)
+                1 -> tab.setCustomView(R.layout.ic_tab_science)
+                2 -> tab.setCustomView(R.layout.ic_tab_weather)
+            }
+
         }.attach()
 
-        tabLayout.getTabAt(0)!!.setIcon(com.google.android.material.R.drawable.ic_m3_chip_check)
     }
 
 
