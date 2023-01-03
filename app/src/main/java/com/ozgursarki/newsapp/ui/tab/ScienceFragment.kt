@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.ozgursarki.newsapp.R
+import com.ozgursarki.newsapp.adapter.NewsFragmentAdapter
 import com.ozgursarki.newsapp.databinding.FragmentScienceBinding
-import com.ozgursarki.newsapp.databinding.FragmentTabBinding
+import com.ozgursarki.newsapp.ui.viewmodel.ScienceFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -15,12 +17,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class ScienceFragment : Fragment() {
 
     private lateinit var binding: FragmentScienceBinding
+    private val viewModel: ScienceFragmentViewModel by viewModels()
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +27,23 @@ class ScienceFragment : Fragment() {
         binding = FragmentScienceBinding.inflate(inflater,container,false)
         val view = binding.root
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val adapter = NewsFragmentAdapter(arrayListOf())
+        binding.sciencerv.adapter = adapter
+
+        viewModel.scienceNews.observe(viewLifecycleOwner,){scienceNews ->
+            adapter.setNews(scienceNews)
+        }
+
+        viewModel.getScience()
+    }
+
+    override fun onResume() {
+        super.onResume()
     }
 
 }

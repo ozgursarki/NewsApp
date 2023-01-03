@@ -48,7 +48,6 @@ class NewsFragment : Fragment() {
             TabModel(NewsType.SPORT),
             TabModel(NewsType.WEATHER),
             TabModel(NewsType.SCIENCE),
-            TabModel(NewsType.POLITICA)
         )
         adapter = NewsPagerAdapter(this,fragmentList)
         viewpager2.adapter = adapter
@@ -59,6 +58,8 @@ class NewsFragment : Fragment() {
         TabLayoutMediator(tabLayout,viewpager2) { tab, position ->
             tab.text = fragmentList[position].newsType.name
         }.attach()
+
+        tabLayout.getTabAt(0)!!.setIcon(com.google.android.material.R.drawable.ic_m3_chip_check);
     }
 
 

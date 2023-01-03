@@ -6,11 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.ozgursarki.newsapp.R
-import com.ozgursarki.newsapp.adapter.SportFragmentAdapter
+import com.ozgursarki.newsapp.adapter.NewsFragmentAdapter
 import com.ozgursarki.newsapp.databinding.FragmentSportBinding
-import com.ozgursarki.newsapp.databinding.FragmentTabBinding
-import com.ozgursarki.newsapp.model.everything.Article
 import com.ozgursarki.newsapp.ui.viewmodel.SportFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class SportFragment : Fragment() {
 
     private lateinit var binding: FragmentSportBinding
-    private lateinit var adapter: SportFragmentAdapter
+    private lateinit var adapter: NewsFragmentAdapter
     private val viewmodel: SportFragmentViewModel by viewModels()
 
 
@@ -40,7 +37,7 @@ class SportFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = SportFragmentAdapter(arrayListOf())
+        val adapter = NewsFragmentAdapter(arrayListOf())
 
         viewmodel.sports.observe(viewLifecycleOwner){ sportList ->
             adapter.setNews(sportList)
