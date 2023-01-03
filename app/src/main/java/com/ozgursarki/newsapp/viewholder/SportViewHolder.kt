@@ -15,10 +15,15 @@ class SportViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val title = itemView.findViewById<TextView>(R.id.title)
     val description = itemView.findViewById<TextView>(R.id.description)
 
-    fun setSportNews(sport: Article){
+    fun setSportNews(sport: Article, callback: (String) -> Unit){
         Picasso.get().load(sport.urlToImage).into(imageView)
         title.text = sport.title
         description.text = sport.description
+
+        imageView.setOnClickListener {
+            callback.invoke(sport.url)
+
+        }
 
     }
 

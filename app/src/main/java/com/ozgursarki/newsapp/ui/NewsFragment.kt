@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
@@ -40,6 +43,7 @@ class NewsFragment : Fragment() {
         return view
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -52,15 +56,15 @@ class NewsFragment : Fragment() {
         adapter = NewsPagerAdapter(this,fragmentList)
         viewpager2.adapter = adapter
 
-
-
         val tabLayout = binding.tabLayout
         TabLayoutMediator(tabLayout,viewpager2) { tab, position ->
             tab.text = fragmentList[position].newsType.name
         }.attach()
 
-        tabLayout.getTabAt(0)!!.setIcon(com.google.android.material.R.drawable.ic_m3_chip_check);
+        tabLayout.getTabAt(0)!!.setIcon(com.google.android.material.R.drawable.ic_m3_chip_check)
     }
+
+
 
 
 }

@@ -10,13 +10,29 @@
         android:name="com.ozgursarki.newsapp.ui.NewsFragment"
         android:label="fragment_news"
         tools:layout="@layout/fragment_news" >
+
+
         <action
-            android:id="@+id/action_newsFragment_to_newsDetailsFragment"
-            app:destination="@id/newsDetailsFragment" />
+            android:id="@+id/action_newsFragment_to_newsDetailsFragment2"
+            app:destination="@id/newsDetailsFragment" >
+
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/sportFragment"
+        android:name="com.ozgursarki.newsapp.ui.tab.SportFragment"
+        android:label="SportFragment" >
+
+
     </fragment>
     <fragment
         android:id="@+id/newsDetailsFragment"
         android:name="com.ozgursarki.newsapp.ui.NewsDetailsFragment"
         android:label="fragment_news_details"
-        tools:layout="@layout/fragment_news_details" />
+        tools:layout="@layout/fragment_news_details" >
+        <argument
+            android:name="url"
+            app:argType="string" />
+    </fragment>
+
 </navigation>

@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.ozgursarki.newsapp.R
 import com.ozgursarki.newsapp.adapter.NewsFragmentAdapter
 import com.ozgursarki.newsapp.databinding.FragmentWeatherBinding
+import com.ozgursarki.newsapp.ui.NewsFragmentDirections
 import com.ozgursarki.newsapp.ui.viewmodel.WeatherFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.text.Typography.dagger
@@ -38,7 +40,10 @@ class WeatherFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = NewsFragmentAdapter(arrayListOf())
+
+        val adapter = NewsFragmentAdapter(arrayListOf(), callback = {
+            onClick(it)
+        })
         binding.weatherrv.adapter = adapter
 
         viewModel.weatherNews.observe(viewLifecycleOwner,){weatherNews ->
@@ -47,6 +52,11 @@ class WeatherFragment : Fragment() {
 
         viewModel.getWeather()
 
+    }
+
+    fun onClick(url: String) {
+        val action = NewsFragmentDirections.actionNewsFragmentToNewsDetailsFragment2(url)
+        findNavController().navigate(action)
     }
 
 }
