@@ -15,10 +15,10 @@ import com.ozgursarki.newsapp.adapter.NewsFragmentAdapter
 import com.ozgursarki.newsapp.databinding.FragmentWeatherBinding
 import com.ozgursarki.newsapp.enum.LangType
 import com.ozgursarki.newsapp.extensions.navigate
+import com.ozgursarki.newsapp.model.everything.Article
 import com.ozgursarki.newsapp.ui.NewsFragmentDirections
 import com.ozgursarki.newsapp.ui.viewmodel.WeatherFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.text.Typography.dagger
 
 
 @AndroidEntryPoint
@@ -62,9 +62,13 @@ class WeatherFragment : BaseFragment(), AdapterView.OnItemSelectedListener {
 
     }
 
-    override fun onClick(url: String) {
-        val action = NewsFragmentDirections.actionNewsFragmentToNewsDetailsFragment2(url)
+    override fun onClick(article:Article) {
+        val action = NewsFragmentDirections.actionNewsFragmentToNewsDetailsFragment2(article)
         navigate(action)
+    }
+
+    override fun onSave(article: Article) {
+        TODO("Not yet implemented")
     }
 
 

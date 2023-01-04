@@ -7,7 +7,7 @@ import com.ozgursarki.newsapp.R
 import com.ozgursarki.newsapp.model.everything.Article
 import com.ozgursarki.newsapp.viewholder.SportViewHolder
 
-class NewsFragmentAdapter(private var newsList: ArrayList<Article>, var callback: (String) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class NewsFragmentAdapter(private var newsList: ArrayList<Article>, var callback: (Article) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.news_row,parent,false)
         return SportViewHolder(view)

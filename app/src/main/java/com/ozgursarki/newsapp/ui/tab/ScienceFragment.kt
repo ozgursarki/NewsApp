@@ -15,6 +15,7 @@ import com.ozgursarki.newsapp.adapter.NewsFragmentAdapter
 import com.ozgursarki.newsapp.databinding.FragmentScienceBinding
 import com.ozgursarki.newsapp.enum.LangType
 import com.ozgursarki.newsapp.extensions.navigate
+import com.ozgursarki.newsapp.model.everything.Article
 import com.ozgursarki.newsapp.ui.NewsFragmentDirections
 import com.ozgursarki.newsapp.ui.viewmodel.ScienceFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -60,9 +61,13 @@ class ScienceFragment : BaseFragment(),AdapterView.OnItemSelectedListener {
         viewModel.getScience()
     }
 
-    override fun onClick(url: String) {
-        val action = NewsFragmentDirections.actionNewsFragmentToNewsDetailsFragment2(url)
+    override fun onClick(article:Article) {
+        val action = NewsFragmentDirections.actionNewsFragmentToNewsDetailsFragment2(article)
         navigate(action)
+    }
+
+    override fun onSave(article: Article) {
+        TODO("Not yet implemented")
     }
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {

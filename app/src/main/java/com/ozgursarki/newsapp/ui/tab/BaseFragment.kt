@@ -1,28 +1,25 @@
 package com.ozgursarki.newsapp.ui.tab
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import com.ozgursarki.newsapp.R
 import com.ozgursarki.newsapp.adapter.NewsFragmentAdapter
+import com.ozgursarki.newsapp.model.everything.Article
 
 abstract class BaseFragment : Fragment(){
     protected lateinit var adapter : NewsFragmentAdapter
 
-    abstract fun onClick(url: String)
+    abstract fun onClick(article: Article)
+
+    abstract fun onSave(article:Article)
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter = NewsFragmentAdapter(arrayListOf(), { url ->
-            onClick(url)
-
+        adapter = NewsFragmentAdapter(arrayListOf(), {
+            onClick(it)
+            onSave(it)
         })
     }
 

@@ -8,7 +8,6 @@ import com.ozgursarki.newsapp.enum.LangType
 import com.ozgursarki.newsapp.model.everything.Article
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import org.intellij.lang.annotations.Language
 import javax.inject.Inject
 
 @HiltViewModel
@@ -30,6 +29,12 @@ class SportFragmentViewModel @Inject constructor(
         viewModelScope.launch {
             val countryNews = repositoryImpl.getNewsByLanguage(language.language,"sport")
             sports.value = countryNews.articles
+        }
+    }
+
+    fun insertArticle(entityArticle:com.ozgursarki.newsapp.data.local.entity.EntityArticle){
+        viewModelScope.launch {
+            repositoryImpl.upsert(entityArticle)
         }
     }
 }

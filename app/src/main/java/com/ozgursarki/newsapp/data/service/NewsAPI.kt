@@ -12,7 +12,7 @@ interface NewsAPI {
         @Query("q", encoded = true)
         category: String,
         @Query("apiKey", encoded = true)
-        apikey: String = "e24d56de324d4f3e8ab373399a6878ef"
+        apikey: String = "898f01ecfd324d6f9f7f91eb7a62b4af"
     ): News
 
     @GET("top-headlines")
@@ -22,6 +22,6 @@ interface NewsAPI {
         @Query("q", encoded = true)
         category: String,
         @Query("apiKey", encoded = true)
-        apikey: String = "e24d56de324d4f3e8ab373399a6878ef"
+        apikey: String = "898f01ecfd324d6f9f7f91eb7a62b4af"
     ): News
 }

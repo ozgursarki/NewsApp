@@ -52,6 +52,7 @@ class NewsFragment : Fragment() {
             TabModel(NewsType.SPORT),
             TabModel(NewsType.WEATHER),
             TabModel(NewsType.SCIENCE),
+            TabModel(NewsType.SAVE)
         )
         adapter = NewsPagerAdapter(this,fragmentList)
         viewpager2.adapter = adapter
@@ -62,6 +63,7 @@ class NewsFragment : Fragment() {
                 0 -> tab.setCustomView(R.layout.ic_tab_sport)
                 1 -> tab.setCustomView(R.layout.ic_tab_science)
                 2 -> tab.setCustomView(R.layout.ic_tab_weather)
+                3 -> tab.setCustomView(R.layout.ic_tab_savearticle)
             }
 
         }.attach()
