@@ -14,7 +14,11 @@
 
         <action
             android:id="@+id/action_newsFragment_to_newsDetailsFragment2"
-            app:destination="@id/newsDetailsFragment" >
+            app:destination="@id/newsDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
 
         </action>
     </fragment>
