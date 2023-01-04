@@ -34,9 +34,10 @@
         android:name="com.ozgursarki.newsapp.ui.NewsDetailsFragment"
         android:label="fragment_news_details"
         tools:layout="@layout/fragment_news_details" >
+
         <argument
-            android:name="url"
-            app:argType="string" />
+            android:name="article"
+            app:argType="com.ozgursarki.newsapp.model.everything.Article" />
     </fragment>
 
 </navigation>

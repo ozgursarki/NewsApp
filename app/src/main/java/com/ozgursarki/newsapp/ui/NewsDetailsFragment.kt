@@ -9,12 +9,15 @@ import android.view.ViewGroup
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.ozgursarki.newsapp.R
 import com.ozgursarki.newsapp.adapter.NewsPagerAdapter
 import com.ozgursarki.newsapp.databinding.FragmentNewsDetailsBinding
 import com.ozgursarki.newsapp.ui.viewmodel.NewsDetailsFragmentViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NewsDetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentNewsDetailsBinding
@@ -40,10 +43,15 @@ class NewsDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val action = args.url
+        binding.floatingActionButton.setOnClickListener(object: View.OnClickListener {
+            override fun onClick(v: View?) {
+                viewmodel.saveArticle(args.article)
+            }
+
+        })
 
 
-        webViewSetup(args.url)
+        webViewSetup(args.article.url!!)
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -56,5 +64,7 @@ class NewsDetailsFragment : Fragment() {
             settings.safeBrowsingEnabled = true
         }
     }
+
+
 
 }
