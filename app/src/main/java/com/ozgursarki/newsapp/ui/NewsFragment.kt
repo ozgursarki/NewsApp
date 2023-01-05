@@ -5,12 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.ozgursarki.newsapp.R
 import com.ozgursarki.newsapp.adapter.NewsPagerAdapter
@@ -25,22 +21,13 @@ class NewsFragment : Fragment() {
     private lateinit var binding: FragmentNewsBinding
     private lateinit var viewpager2: ViewPager2
     private lateinit var adapter : NewsPagerAdapter
-    private lateinit var recyclerView: RecyclerView
-
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentNewsBinding.inflate(inflater,container,false)
-        val view = binding.root
-        return view
+    ): View {
+        binding = FragmentNewsBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
 
@@ -48,7 +35,7 @@ class NewsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewpager2 = binding.viewPager2
-        val fragmentList = listOf<TabModel>(
+        val fragmentList = listOf(
             TabModel(NewsType.SPORT),
             TabModel(NewsType.WEATHER),
             TabModel(NewsType.SCIENCE),

@@ -20,8 +20,11 @@ class RepositoryImplementation @Inject constructor(
 
     override suspend fun upsert(entityArticle: EntityArticle) = db.newsDao().upsert(entityArticle)
 
-    override suspend fun getSavedNews() : List<EntityArticle> {
-        val articles = db.newsDao().getAllArticles()
-        return articles
+    override suspend fun getSavedNews(): List<EntityArticle> {
+        return db.newsDao().getAllArticles()
+    }
+
+    override suspend fun deleteArticle(article: EntityArticle) {
+        db.newsDao().deleteArticle(article)
     }
 }

@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ozgursarki.newsapp.data.RepositoryImplementation
 import com.ozgursarki.newsapp.enum.LangType
-import com.ozgursarki.newsapp.model.everything.Article
+import com.ozgursarki.newsapp.model.Article
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

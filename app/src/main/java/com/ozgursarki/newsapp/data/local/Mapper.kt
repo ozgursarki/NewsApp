@@ -1,10 +1,11 @@
 package com.ozgursarki.newsapp.data.local
 
 import com.ozgursarki.newsapp.data.local.entity.EntityArticle
-import com.ozgursarki.newsapp.model.everything.Article
+import com.ozgursarki.newsapp.model.Article
 
-fun Article.toDataArticle(): com.ozgursarki.newsapp.data.local.entity.EntityArticle{
-    return com.ozgursarki.newsapp.data.local.entity.EntityArticle(
+fun Article.toDataArticle(): EntityArticle{
+    return EntityArticle(
+        uid = this.id,
         author = this.author,
         content = this.content,
         description = this.description,
@@ -18,6 +19,7 @@ fun Article.toDataArticle(): com.ozgursarki.newsapp.data.local.entity.EntityArti
 
 fun EntityArticle.toModelArticle(): Article {
     return Article(
+        id = this.uid,
         author = this.author,
         content = this.content,
         description = this.description,

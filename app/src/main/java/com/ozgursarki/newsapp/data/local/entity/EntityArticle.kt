@@ -2,7 +2,7 @@ package com.ozgursarki.newsapp.data.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.ozgursarki.newsapp.model.everything.Source
+import com.ozgursarki.newsapp.model.Source
 
 @Entity(
     tableName = "articles"

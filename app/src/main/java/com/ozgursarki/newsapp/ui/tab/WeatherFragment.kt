@@ -1,7 +1,6 @@
 package com.ozgursarki.newsapp.ui.tab
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,13 +8,11 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.ozgursarki.newsapp.R
-import com.ozgursarki.newsapp.adapter.NewsFragmentAdapter
 import com.ozgursarki.newsapp.databinding.FragmentWeatherBinding
 import com.ozgursarki.newsapp.enum.LangType
 import com.ozgursarki.newsapp.extensions.navigate
-import com.ozgursarki.newsapp.model.everything.Article
+import com.ozgursarki.newsapp.model.Article
 import com.ozgursarki.newsapp.ui.NewsFragmentDirections
 import com.ozgursarki.newsapp.ui.viewmodel.WeatherFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,9 +29,8 @@ class WeatherFragment : BaseFragment(), AdapterView.OnItemSelectedListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentWeatherBinding.inflate(inflater,container,false)
-        val view = binding.root
-        return view
+        binding = FragmentWeatherBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -54,15 +50,15 @@ class WeatherFragment : BaseFragment(), AdapterView.OnItemSelectedListener {
             spinner.adapter = adapter
         }
 
-        viewModel.weatherNews.observe(viewLifecycleOwner,){weatherNews ->
-            adapter.setNews(weatherNews)
+        viewModel.weatherNews.observe(viewLifecycleOwner){weatherNews ->
+            adapter.differ.submitList(weatherNews)
         }
 
         viewModel.getWeather()
 
     }
 
-    override fun onClick(article:Article) {
+    override fun onClick(article: Article) {
         val action = NewsFragmentDirections.actionNewsFragmentToNewsDetailsFragment2(article)
         navigate(action)
     }
@@ -73,8 +69,7 @@ class WeatherFragment : BaseFragment(), AdapterView.OnItemSelectedListener {
 
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-        val item = p0?.getItemAtPosition(p2)
-        when (item){
+        when (p0?.getItemAtPosition(p2)){
             LangType.German.name -> viewModel.getNews(LangType.German)
             LangType.Turkish.name -> viewModel.getNews(LangType.Turkish)
             LangType.English.name -> viewModel.getNews(LangType.English)

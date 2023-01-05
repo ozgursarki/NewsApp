@@ -37,7 +37,7 @@
 
         <argument
             android:name="article"
-            app:argType="com.ozgursarki.newsapp.model.everything.Article" />
+            app:argType="com.ozgursarki.newsapp.model.Article" />
     </fragment>
 
 </navigation>

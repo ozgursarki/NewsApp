@@ -1,7 +1,6 @@
 package com.ozgursarki.newsapp.di
 
 import android.content.Context
-import androidx.room.Database
 import com.ozgursarki.newsapp.data.Repository
 import com.ozgursarki.newsapp.data.RepositoryImplementation
 import com.ozgursarki.newsapp.data.local.NewsDatabase

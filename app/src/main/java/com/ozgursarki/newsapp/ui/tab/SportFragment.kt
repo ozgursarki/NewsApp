@@ -1,7 +1,6 @@
 package com.ozgursarki.newsapp.ui.tab
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,14 +8,12 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.ozgursarki.newsapp.R
-import com.ozgursarki.newsapp.adapter.NewsFragmentAdapter
 import com.ozgursarki.newsapp.data.local.toDataArticle
 import com.ozgursarki.newsapp.databinding.FragmentSportBinding
 import com.ozgursarki.newsapp.enum.LangType
 import com.ozgursarki.newsapp.extensions.navigate
-import com.ozgursarki.newsapp.model.everything.Article
+import com.ozgursarki.newsapp.model.Article
 import com.ozgursarki.newsapp.ui.NewsFragmentDirections
 import com.ozgursarki.newsapp.ui.viewmodel.SportFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,18 +26,12 @@ class SportFragment : BaseFragment(), AdapterView.OnItemSelectedListener {
     private val viewmodel: SportFragmentViewModel by viewModels()
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentSportBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -58,7 +49,7 @@ class SportFragment : BaseFragment(), AdapterView.OnItemSelectedListener {
         }
 
         viewmodel.sports.observe(viewLifecycleOwner) { sportList ->
-            adapter.setNews(sportList)
+            adapter.differ.submitList(sportList)
 
         }
 
@@ -70,7 +61,7 @@ class SportFragment : BaseFragment(), AdapterView.OnItemSelectedListener {
 
     }
 
-    fun getSportList() {
+    private fun getSportList() {
         viewmodel.getSportNews()
 
     }
@@ -85,8 +76,7 @@ class SportFragment : BaseFragment(), AdapterView.OnItemSelectedListener {
     }
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-        val item = p0?.getItemAtPosition(p2)
-        when (item){
+        when (p0?.getItemAtPosition(p2)){
             LangType.German.name -> viewmodel.getNews(LangType.German)
             LangType.Turkish.name -> viewmodel.getNews(LangType.Turkish)
             LangType.English.name -> viewmodel.getNews(LangType.English)

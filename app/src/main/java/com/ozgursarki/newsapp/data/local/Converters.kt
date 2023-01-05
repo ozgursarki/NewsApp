@@ -1,7 +1,7 @@
 package com.ozgursarki.newsapp.data.local
 
 import androidx.room.TypeConverter
-import com.ozgursarki.newsapp.model.everything.Source
+import com.ozgursarki.newsapp.model.Source
 
 class Converters {
 

@@ -1,7 +1,6 @@
 package com.ozgursarki.newsapp.data.service
 
 import com.ozgursarki.newsapp.model.News
-import com.ozgursarki.newsapp.model.everything.GetNews
 import retrofit2.http.GET
 import retrofit2.http.Query
 

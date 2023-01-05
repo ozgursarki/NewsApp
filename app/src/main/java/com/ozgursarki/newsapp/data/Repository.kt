@@ -14,4 +14,6 @@ interface Repository {
 
     suspend fun getSavedNews() : List<EntityArticle>
 
+    suspend fun deleteArticle(article: EntityArticle)
+
 }

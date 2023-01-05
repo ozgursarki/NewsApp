@@ -1,9 +1,6 @@
 package com.ozgursarki.newsapp.data.local
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.ozgursarki.newsapp.data.local.entity.EntityArticle
 
 @Dao
@@ -13,4 +10,9 @@ interface NewsDao {
 
     @Query("SELECT * FROM articles")
     suspend fun getAllArticles(): List<EntityArticle>
+
+    @Delete
+    suspend fun deleteArticle(article: EntityArticle)
+
+
 }
